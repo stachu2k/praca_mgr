@@ -13,9 +13,29 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url
+from django.conf.urls import url, include
+import django.contrib.auth.views
 from django.contrib import admin
+from app.forms import CustomAuthenticationForm
 
 urlpatterns = [
+    url(r'^login/$',
+        django.contrib.auth.views.login,
+        {
+            'template_name': 'login/login.html',
+            'authentication_form': CustomAuthenticationForm,
+            'extra_context':
+                {
+                    'title': 'Logowanie',
+                }
+        },
+        name='login'),
+    url(r'^logout/$',
+        django.contrib.auth.views.logout,
+        {
+            'next_page': '/home/',
+        },
+        name='logout'),
     url(r'^admin/', admin.site.urls),
+    url(r'^', include('app.urls'))
 ]
