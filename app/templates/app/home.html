@@ -1,0 +1,41 @@
+﻿{% extends "app/layout.html" %}
+
+{% block content %}
+
+<!-- Home Page -->
+
+<div data-role="page" id="home">
+
+    {% include "app/include/header.html" %}
+
+    <div data-role="main" class="ui-content">
+        <a href="#home" class="ui-btn ui-corner-all ui-shadow">Dziennik zajęć</a>
+        <a href="#add_group" class="ui-btn ui-corner-all ui-shadow">Dodaj grupę</a>
+    </div>
+
+    {% include "app/include/footer.html" %}
+
+</div>
+
+<!-- / Home Page -->
+
+<!-- Add Group Page -->
+
+<div data-role="page" id="add_group">
+
+    <div data-role="header" data-position="fixed">
+        <a href="#" class="ui-btn ui-btn-left ui-corner-all ui-shadow ui-icon-back ui-btn-icon-left" data-rel="back">Powrót</a>
+        <h1>Dodaj grupę</h1>
+    </div>
+
+    <div data-role="main" class="ui-content">
+
+    </div>
+
+    {% include "app/include/footer.html" %}
+
+</div>
+
+<!-- / Add Group Page -->
+
+{% endblock content %}

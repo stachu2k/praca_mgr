@@ -7,6 +7,6 @@ from django.contrib.auth.decorators import login_required
 @login_required(login_url='/login/')
 def home(request):
     context = {
-        'title':'Home',
+        'title': 'Home',
     }
-    return render(request, 'app/index.html', context)
+    return render(request, 'app/home.html', context)

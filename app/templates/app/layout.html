@@ -1,13 +1,13 @@
-﻿{% load staticfiles %}<!DOCTYPE html>
+﻿{% load static %}<!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Praca Magisterska</title>
-<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+<link rel="stylesheet" href="{% static 'mobile/jquery.mobile-1.4.5.css' %}" />
 <link rel="stylesheet" href="{% static 'css/site.css' %}?v={% now "U" %}">
-<script src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
-<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+<script src="{% static 'scripts/jquery.js' %}"></script>
+<script src="{% static 'mobile/jquery.mobile-1.4.5.js' %}"></script>
 <script src="{% static 'scripts/main.js' %}?v={% now "U" %}"></script>
 <script src="{% static 'scripts/semesters.js' %}?v={% now "U" %}"></script>
 <script src="{% static 'scripts/students.js' %}?v={% now "U" %}"></script>
