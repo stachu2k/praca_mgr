@@ -4,15 +4,23 @@
 
 <!-- Add Group Page -->
 
-<div data-role="page" id="add_group">
+<div data-role="page" id="add_group" data-title="{{ title }}">
 
     <div data-role="header" data-position="fixed">
         <a href="#" class="ui-btn ui-btn-left ui-corner-all ui-shadow ui-icon-back ui-btn-icon-left" data-rel="back">Powrót</a>
-        <h1>Dodaj grupę</h1>
+        <h1>{{ title }}</h1>
     </div>
 
     <div data-role="main" class="ui-content">
-
+        <form action="/add_group/" method="post">
+            {% csrf_token %}
+            {% for field in upload_form %}
+            <div class="ui-field-contain">
+                {{ field.label_tag }}
+                {{ field }}
+            </div>
+            {% endfor %}
+        </form>
     </div>
 
     {% include "app/include/footer.html" %}

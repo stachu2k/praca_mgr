@@ -11,3 +11,7 @@ class CustomAuthenticationForm(AuthenticationForm):
     password = forms.CharField(label="Hasło",
                                widget=forms.PasswordInput({
                                    'placeholder':'Wpis hasło'}))
+
+
+class AddGroupForm(forms.Form):
+    upload_file = forms.FileField(label="Wybierz plik danych z grupą (.grp)")
