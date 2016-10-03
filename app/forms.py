@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import AuthenticationForm
 from django.utils.translation import ugettext_lazy as _
+from django.core.exceptions import ValidationError
 
 
 class CustomAuthenticationForm(AuthenticationForm):
@@ -14,4 +15,13 @@ class CustomAuthenticationForm(AuthenticationForm):
 
 
 class AddGroupForm(forms.Form):
-    upload_file = forms.FileField(label="Wybierz plik danych z grupą (.grp)")
+    def validate_upload_grp_ext(value):
+        if not value.name.endswith('.grp'):
+            raise ValidationError('Złe rozszerzenie pliku.')
+
+    def validate_upload_sem_ext(value):
+        if not value.name.endswith('.sem'):
+            raise ValidationError('Złe rozszerzenie pliku.')
+
+    upload_grp = forms.FileField(label="Wybierz plik danych z grupą (.grp)", validators=[validate_upload_grp_ext])
+    upload_sem = forms.FileField(label="Wybierz plik danych semestru (.sem)", validators=[validate_upload_sem_ext])

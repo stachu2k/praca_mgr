@@ -1,0 +1,40 @@
+﻿{% extends "app/layout.html" %}
+{% load addcss_tag %}
+
+{% block content %}
+
+<!-- Add Group Page -->
+
+<div data-role="page" id="add_group" data-title="{{ title }}">
+
+    <div data-role="header" data-position="fixed">
+        <a href="#" class="ui-btn ui-btn-left ui-corner-all ui-shadow ui-icon-back ui-btn-icon-left" data-rel="back">Powrót</a>
+        <h1>{{ title }}</h1>
+    </div>
+
+    <div data-role="main" class="ui-content">
+        <form enctype="multipart/form-data" action="/add_group/" method="post" data-ajax="false">
+            {% csrf_token %}
+            {% for field in add_group_form %}
+            <div class="ui-field-contain">
+                {{ field.label_tag }}
+                {% if field.errors %}
+                    {{ field|addcss:"input-validation-error" }}
+                    {{ field.errors }}
+                {%  else %}
+                    {{ field }}
+                {% endif %}
+            </div>
+            {% endfor %}
+            {{ add_group_form.non_field_errors }}
+        <input type="submit" value="Dodaj grupę">
+        </form>
+    </div>
+
+    {% include "app/include/footer.html" %}
+
+</div>
+
+<!-- / Add Group Page -->
+
+{% endblock content %}

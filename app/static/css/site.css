@@ -23,6 +23,24 @@ input[type="checkbox"].input-validation-error {
     display: none;
 }
 
+.errorlist {
+    list-style: none;
+    margin: 0;
+	padding: 0;
+    color: #b94a48;
+}
+
+.errorlist li {
+    margin: 0;
+	padding: 0;
+}
+
+@media (min-width: 28em) {
+    .errorlist {
+        margin-left: 22%;
+    }
+}
+
 .no-data-infobox {
     text-align: center;
     font-style: italic;

@@ -9,7 +9,6 @@
             <div style="max-width: 800px; margin: 0 auto;">
                 <form action="{% url 'login' %}" method="post" data-ajax="false">
                 {% csrf_token %}
-                {{ form.non_field_errors }}
                 {% for field in form %}
                 <div class="ui-field-contain">
                     {{ field.label_tag }}
@@ -21,6 +20,7 @@
                     {% endif %}
                 </div>
                 {% endfor %}
+                {{ form.non_field_errors }}
                 <input type="submit" value="Zaloguj">
                 <input type="hidden" name="next" value="/home/">
                 </form>

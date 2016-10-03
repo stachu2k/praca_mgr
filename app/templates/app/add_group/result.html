@@ -12,15 +12,7 @@
     </div>
 
     <div data-role="main" class="ui-content">
-        <form action="/add_group/" method="post">
-            {% csrf_token %}
-            {% for field in upload_form %}
-            <div class="ui-field-contain">
-                {{ field.label_tag }}
-                {{ field }}
-            </div>
-            {% endfor %}
-        </form>
+        <p>{{ message }}</p>
     </div>
 
     {% include "app/include/footer.html" %}
