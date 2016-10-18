@@ -10,6 +10,7 @@ class Semester(models.Model):
     )
     academic_year = models.CharField(max_length=7)
     sem_type = models.CharField(max_length=1, choices=SEM_CHOICES, default=ZIMOWY)
+    active = models.BooleanField(default=False)
 
 
 class Group(models.Model):
@@ -17,10 +18,11 @@ class Group(models.Model):
     DRUGI = '2'
     TRZECI = '3'
     GRADES = (
-        (PIERWSZY, 'I-ST'),
-        (DRUGI, 'II-ST'),
-        (TRZECI, 'III-ST'),
+        (PIERWSZY, 'I'),
+        (DRUGI, 'II'),
+        (TRZECI, 'III'),
     )
+    short_name = models.CharField(max_length=30)
     specialization = models.CharField(max_length=50)
     stationary = models.BooleanField(default=True)
     grade = models.CharField(max_length=1, choices=GRADES, default=PIERWSZY)
@@ -52,6 +54,7 @@ class Classes(models.Model):
     classes_type = models.CharField(max_length=3, choices=CLASSES, default=WYKLAD)
     start_time = models.TimeField()
     end_time = models.TimeField()
+    place = models.CharField(max_length=6)
     group = models.OneToOneField(Group, primary_key=True)
 
 

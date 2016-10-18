@@ -1,0 +1,31 @@
+{% extends "app/layout.html" %}
+
+{% block content %}
+
+<!-- Browse Group Page -->
+
+<div data-role="page" id="manage_semesters" data-title="{{ title }}">
+
+    <div data-role="header" data-position="fixed">
+        <a href="#" class="ui-btn ui-btn-left ui-corner-all ui-shadow ui-icon-back ui-btn-icon-left" data-rel="back">Powrót</a>
+        <h1>{{ title }}</h1>
+    </div>
+
+    <div data-role="main" class="ui-content">
+
+        <h4>Lista semestrów</h4>
+
+        <ul data-role="listview" data-inset="true">
+            {% for semester in semesters %}
+                <li><a href="#">{{ semester.academic_year }}{{ semester.sem_type }}<span class="ui-li-count">{{ semester.groups }}</span></a></li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    {% include "app/include/footer.html" %}
+
+</div>
+
+<!-- / Browse Group Page -->
+
+{% endblock content %}
