@@ -79,7 +79,7 @@ def create_group_from_files(upload_grp, upload_sem):
 
         classes = Classes(
             subject=subject,
-            classes_type=classes_type,
+            classes_type=get_classes_type(classes_type),
             start_time=str_to_time(start_time),
             end_time=str_to_time(end_time),
             place=place,
@@ -138,6 +138,17 @@ def is_stationary(value):
 def get_sem_type(value):
     choices = {'letni': 'l', 'zimowy': 'z'}
     return choices.get(value, 'z')
+
+
+def get_classes_type(value):
+    choices = {
+        'WYKŁAD': 'WYK',
+        'ĆWICZENIA': 'CW',
+        'LABORATORIUM': 'LAB',
+        'PROJEKT': 'PR',
+        'SEMINARIUM': 'SEM'
+    }
+    return choices.get(value, 'WYK')
 
 
 def str_to_date(value):

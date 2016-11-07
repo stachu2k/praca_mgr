@@ -1,4 +1,10 @@
-﻿/* styles for validation helpers */
+﻿.clearfix:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+/* styles for validation helpers */
 .field-validation-error {
     color: #b94a48;
 }
@@ -55,3 +61,228 @@ input[type="checkbox"].input-validation-error {
 .loading {
     text-align: center;
 }
+
+/* styles for group summary */
+
+.summary-title {
+    display: block;
+    margin-top: 6px;
+    font-size: smaller;
+    font-weight: bold;
+}
+
+.summary-box {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: smaller;
+}
+
+.summary-box > .row {
+    display: table-row;
+}
+
+.summary-box > .row > div {
+    display: table-cell;
+}
+
+.summary-box > .row > div:first-child {
+    text-align: right;
+}
+
+.summary-box > .row > div:last-child {
+    padding-left: 10px;
+}
+
+/* styles for register */
+
+.register-wrapper {
+    background-color: #e9e9e9;
+}
+
+.register-container {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.register-container > div.header {
+    height: 46px;
+    text-align: center;
+}
+
+.register-container > div.header > .title {
+    line-height: 46px;
+}
+
+.register-container > div.header > a.left {
+    float: left;
+    margin-right: 0;
+}
+
+.register-container > div.header > a.right {
+    float: right;
+    margin-right: 0;
+}
+
+.register-container > .table {
+    background-color: #ffffff;
+}
+
+.register-container > .table > .col {
+    float: left;
+    width: 19.2%;
+}
+
+.register-container > .table > .col.hours {
+    width: 4%;
+    border-left: 0;
+    font-size: smaller;
+}
+
+.register-container > .table > .col > .cell {
+    height: 60px;
+    border-top: 1px solid black;
+    border-left: 1px solid black;
+}
+
+.register-container > .table > .col > .cell:first-child {
+    border-top: 0;
+    font-weight: bold;
+    text-align: center;
+    line-height: 60px;
+}
+
+.register-container > .table > .col > .cell:first-child > span {
+    line-height: 1.5;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.register-container > .table > .col.hours > .cell {
+    border-left: 0;
+}
+
+@media screen and (max-width: 1430px) {
+    .register-container > .table > .col {
+        width: 19%;
+    }
+
+    .register-container > .table > .col.hours {
+        width: 5%;
+    }
+}
+
+@media screen and (max-width: 1220px) {
+    .register-container > .table > .col {
+        width: 18.6%;
+    }
+
+    .register-container > .table > .col.hours {
+        width: 7%;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .register-container > .table > .col {
+        width: 22.75%;
+    }
+
+    .register-container > .table > .col.hours {
+        width: 9%;
+    }
+
+    .register-container > .table > .col:nth-child(6) {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 850px) {
+    .register-container > .table > .col {
+        width: 30%;
+    }
+
+    .register-container > .table > .col.hours {
+        width: 10%;
+    }
+
+    .register-container > .table > .col:nth-child(5) {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .register-container > .table > .col {
+        width: 44%;
+    }
+
+    .register-container > .table > .col.hours {
+        width: 12%;
+    }
+
+    .register-container > .table > .col:nth-child(4) {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .register-container > .table > .col {
+        width: 86%;
+    }
+
+    .register-container > .table > .col.hours {
+        width: 14%;
+    }
+
+    .register-container > .table > .col:nth-child(3) {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .register-container > .table > .col {
+        width: 84%;
+    }
+
+    .register-container > .table > .col.hours {
+        width: 16%;
+    }
+}
+
+/*
+
+.register-container > table {
+    width: 100%;
+    background-color: white;
+    border: 0;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+.register-container > table tr {
+    border-top: 1px solid black;
+}
+
+.register-container > table tr td, .register-container > table tr th {
+    height: 60px;
+    padding: 0;
+    border-left: 1px solid black;
+}
+
+.register-container table tr td:first-child, .register-container table tr th:first-child {
+    border-left: none;
+}
+
+.register-container > table thead tr {
+    border-top: none;
+}
+
+.register-container > table th {
+    font-weight: normal;
+}
+
+.register-container > table tbody th {
+    vertical-align: top;
+    text-align: left;
+    padding: 3px 0 0 3px;
+    font-size: smaller;
+}*/

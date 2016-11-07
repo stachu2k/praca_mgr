@@ -9,8 +9,10 @@
     {% include "app/include/header.html" %}
 
     <div data-role="main" class="ui-content">
-        <a href="/browse_group/" class="ui-btn ui-corner-all ui-shadow">Przeglądaj grupy</a>
-        <a href="/add_group/" class="ui-btn ui-corner-all ui-shadow">Dodaj grupę</a>
+        <a href="{% url 'register' %}" class="ui-btn ui-corner-all ui-shadow">Dziennik</a>
+        <a href="{% url 'browse_group' %}" class="ui-btn ui-corner-all ui-shadow">Przeglądaj grupy</a>
+        <a href="{% url 'add_group' %}" class="ui-btn ui-corner-all ui-shadow">Dodaj grupę</a>
+        <a href="{% url 'manage_semesters' %}" class="ui-btn ui-corner-all ui-shadow">Zarządzaj semestrami</a>
     </div>
 
     {% include "app/include/footer.html" %}

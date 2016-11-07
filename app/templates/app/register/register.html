@@ -1,0 +1,174 @@
+{% extends "app/layout.html" %}
+
+{% block content %}
+
+<!-- Register Page -->
+
+<div data-role="page" id="register" data-title="{{ title }}">
+
+    <div data-role="header" data-position="fixed">
+        <a href="#" class="ui-btn ui-btn-left ui-corner-all ui-shadow ui-icon-back ui-btn-icon-left" data-rel="back">Powrót</a>
+        <h1>{{ title }}</h1>
+    </div>
+
+    <div data-role="main" class="ui-content">
+
+        <div class="register-wrapper">
+            <div class="register-container">
+                <div class="header">
+                    <span class="title">Dziś jest cwartek</span>
+                    <a href="#anylink" class="left ui-btn ui-corner-all ui-shadow ui-icon-carat-l ui-btn-icon-notext ui-btn-inline">Wstecz</a>
+                    <a href="#anylink" class="right ui-btn ui-corner-all ui-shadow ui-icon-carat-r ui-btn-icon-notext ui-btn-inline">Dalej</a>
+                </div>
+                <div class="table clearfix">
+                    <div class="col hours">
+                        <div class="cell"></div>
+                        <div class="cell">7:30</div>
+                        <div class="cell">8:20</div>
+                        <div class="cell">9:15</div>
+                        <div class="cell">10:05</div>
+                        <div class="cell">11:00</div>
+                        <div class="cell">11:55</div>
+                        <div class="cell">12:50</div>
+                        <div class="cell">13:45</div>
+                        <div class="cell">14:40</div>
+                        <div class="cell">15:30</div>
+                        <div class="cell">16:20</div>
+                        <div class="cell">17:15</div>
+                        <div class="cell">18:05</div>
+                        <div class="cell">19:00</div>
+                        <div class="cell">19:55</div>
+                    </div>
+{#                    <div class="col" data-date="25.10.2016">#}
+{#                        <div class="cell"><span>25.10.2016<br>poniedziałek</span></div>#}
+{#                        <div class="cell" data-time="7:30"></div>#}
+{#                        <div class="cell" data-time="8:20"></div>#}
+{#                        <div class="cell" data-time="9:15"></div>#}
+{#                        <div class="cell" data-time="10:05"></div>#}
+{#                        <div class="cell" data-time="11:00"></div>#}
+{#                        <div class="cell" data-time="11:55"></div>#}
+{#                        <div class="cell" data-time="12:50"></div>#}
+{#                        <div class="cell" data-time="13:45"></div>#}
+{#                        <div class="cell" data-time="14:40"></div>#}
+{#                        <div class="cell" data-time="15:30"></div>#}
+{#                        <div class="cell" data-time="16:20"></div>#}
+{#                        <div class="cell" data-time="17:15"></div>#}
+{#                        <div class="cell" data-time="18:05"></div>#}
+{#                        <div class="cell" data-time="19:00"></div>#}
+{#                        <div class="cell" data-time="19:55"></div>#}
+{#                    </div>#}
+{#                    <div class="col" data-date="26.10.2016">#}
+{#                        <div class="cell"><span>26.10.2016<br>wtorek</span></div>#}
+{#                        <div class="cell" data-time="7:30"></div>#}
+{#                        <div class="cell" data-time="8:20"></div>#}
+{#                        <div class="cell" data-time="9:15"></div>#}
+{#                        <div class="cell" data-time="10:05"></div>#}
+{#                        <div class="cell" data-time="11:00"></div>#}
+{#                        <div class="cell" data-time="11:55"></div>#}
+{#                        <div class="cell" data-time="12:50"></div>#}
+{#                        <div class="cell" data-time="13:45"></div>#}
+{#                        <div class="cell" data-time="14:40"></div>#}
+{#                        <div class="cell" data-time="15:30"></div>#}
+{#                        <div class="cell" data-time="16:20"></div>#}
+{#                        <div class="cell" data-time="17:15"></div>#}
+{#                        <div class="cell" data-time="18:05"></div>#}
+{#                        <div class="cell" data-time="19:00"></div>#}
+{#                        <div class="cell" data-time="19:55"></div>#}
+{#                    </div>#}
+{#                    <div class="col" data-date="27.10.2016">#}
+{#                        <div class="cell"><span>27.10.2016<br>środa</span></div>#}
+{#                        <div class="cell" data-time="7:30"></div>#}
+{#                        <div class="cell" data-time="8:20"></div>#}
+{#                        <div class="cell" data-time="9:15"></div>#}
+{#                        <div class="cell" data-time="10:05"></div>#}
+{#                        <div class="cell" data-time="11:00"></div>#}
+{#                        <div class="cell" data-time="11:55"></div>#}
+{#                        <div class="cell" data-time="12:50"></div>#}
+{#                        <div class="cell" data-time="13:45"></div>#}
+{#                        <div class="cell" data-time="14:40"></div>#}
+{#                        <div class="cell" data-time="15:30"></div>#}
+{#                        <div class="cell" data-time="16:20"></div>#}
+{#                        <div class="cell" data-time="17:15"></div>#}
+{#                        <div class="cell" data-time="18:05"></div>#}
+{#                        <div class="cell" data-time="19:00"></div>#}
+{#                        <div class="cell" data-time="19:55"></div>#}
+{#                    </div>#}
+{#                    <div class="col" data-date="28.10.2016">#}
+{#                        <div class="cell"><span>28.10.2016<br>czwartek</span></div>#}
+{#                        <div class="cell" data-time="7:30"></div>#}
+{#                        <div class="cell" data-time="8:20"></div>#}
+{#                        <div class="cell" data-time="9:15"></div>#}
+{#                        <div class="cell" data-time="10:05"></div>#}
+{#                        <div class="cell" data-time="11:00"></div>#}
+{#                        <div class="cell" data-time="11:55"></div>#}
+{#                        <div class="cell" data-time="12:50"></div>#}
+{#                        <div class="cell" data-time="13:45"></div>#}
+{#                        <div class="cell" data-time="14:40"></div>#}
+{#                        <div class="cell" data-time="15:30"></div>#}
+{#                        <div class="cell" data-time="16:20"></div>#}
+{#                        <div class="cell" data-time="17:15"></div>#}
+{#                        <div class="cell" data-time="18:05"></div>#}
+{#                        <div class="cell" data-time="19:00"></div>#}
+{#                        <div class="cell" data-time="19:55"></div>#}
+{#                    </div>#}
+{#                    <div class="col" data-date="29.10.2016">#}
+{#                        <div class="cell"><span>29.10.2016<br>piątek</span></div>#}
+{#                        <div class="cell" data-time="7:30"></div>#}
+{#                        <div class="cell" data-time="8:20"></div>#}
+{#                        <div class="cell" data-time="9:15"></div>#}
+{#                        <div class="cell" data-time="10:05"></div>#}
+{#                        <div class="cell" data-time="11:00"></div>#}
+{#                        <div class="cell" data-time="11:55"></div>#}
+{#                        <div class="cell" data-time="12:50"></div>#}
+{#                        <div class="cell" data-time="13:45"></div>#}
+{#                        <div class="cell" data-time="14:40"></div>#}
+{#                        <div class="cell" data-time="15:30"></div>#}
+{#                        <div class="cell" data-time="16:20"></div>#}
+{#                        <div class="cell" data-time="17:15"></div>#}
+{#                        <div class="cell" data-time="18:05"></div>#}
+{#                        <div class="cell" data-time="19:00"></div>#}
+{#                        <div class="cell" data-time="19:55"></div>#}
+{#                    </div>#}
+                </div>
+                {% comment %}<table>
+                    <thead>
+                        <tr>
+                            <th>&nbsp;</th>
+                            <th>25.10.2016<br>poniedziałek</th>
+                            <th>26.10.2016</th>
+                            <th>27.10.2016</th>
+                            <th>28.10.2016</th>
+                            <th>29.10.2016</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>7:50</th>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <th>8:20</th>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                        </tr>
+                    </tbody>
+                </table>{% endcomment %}
+            </div>
+        </div>
+
+    </div>
+
+    {% include "app/include/footer.html" %}
+
+</div>
+
+<!-- / Register Page -->
+
+{% endblock content %}

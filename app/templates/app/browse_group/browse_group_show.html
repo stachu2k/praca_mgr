@@ -1,0 +1,61 @@
+{% extends "app/layout.html" %}
+
+{% block content %}
+
+<!-- Browse Group Show Page -->
+
+<div data-role="page" id="browse_group_show" data-title="{{ title }}">
+
+    <div data-role="header" data-position="fixed">
+        <a href="#" class="ui-btn ui-btn-left ui-corner-all ui-shadow ui-icon-back ui-btn-icon-left" data-rel="back">Powrót</a>
+        <h1>{{ title }}</h1>
+    </div>
+
+    <div data-role="main" class="ui-content">
+
+        <h3>{{ classes.group.short_name }}</h3>
+
+        <span class="summary-title">Podsumowanie:</span>
+        <div class="summary-box">
+            <div class="row"><div><span style="font-weight: bold">Kierunek:</span></div><div>{{ classes.group.specialization }}</div></div>
+            <div class="row"><div><span style="font-weight: bold">Studia:</span></div><div>{{ classes.group.get_stationary_display }}</div></div>
+            <div class="row"><div><span style="font-weight: bold">Stopień:</span></div><div>{{ classes.group.get_grade_display }}</div></div>
+            <div class="row"><div><span style="font-weight: bold">Rok studiów:</span></div><div>{{ classes.group.get_year_of_study_display }}</div></div>
+            <div class="row"><div><span style="font-weight: bold">Semestr:</span></div><div>{{ classes.group.get_sem_nr_display }}</div></div>
+        </div>
+
+        <span class="summary-title">Zapisana na zajęcia:</span>
+        <div class="summary-box">
+            <div class="row"><div><span style="font-weight: bold">Przedmiot:</span></div><div>{{ classes.subject }}</div></div>
+            <div class="row"><div><span style="font-weight: bold">Typ:</span></div><div>{{ classes.get_classes_type_display }}</div></div>
+            <div class="row"><div><span style="font-weight: bold">Godziny zajęć:</span></div><div>{{ classes.start_time }} - {{ classes.end_time }}</div></div>
+            <div class="row"><div><span style="font-weight: bold">Sala:</span></div><div>{{ classes.place }}</div></div>
+        </div>
+
+        <div data-role="collapsible" data-collapsed-icon="arrow-d" data-expanded-icon="arrow-u">
+          <h1>Lista studentów</h1>
+          <ul data-role="listview">
+              {% for student in students %}
+                <li>{{ student.surname }} {{ student.name }}</li>
+              {% endfor %}
+          </ul>
+        </div>
+
+        <div data-role="collapsible" data-collapsed-icon="arrow-d" data-expanded-icon="arrow-u">
+          <h1>Terminy zajęć</h1>
+          <ul data-role="listview">
+              {% for cd in classes_dates %}
+                <li>{{ cd.date }}</li>
+              {% endfor %}
+          </ul>
+        </div>
+
+    </div>
+
+    {% include "app/include/footer.html" %}
+
+</div>
+
+<!-- / Browse Group Show Page -->
+
+{% endblock content %}

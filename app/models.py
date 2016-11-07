@@ -17,17 +17,36 @@ class Group(models.Model):
     PIERWSZY = '1'
     DRUGI = '2'
     TRZECI = '3'
+    CZWARTY = '4'
+    PIATY = '5'
+    SZOSTY = '6'
+    SIODMY = '7'
     GRADES = (
         (PIERWSZY, 'I'),
         (DRUGI, 'II'),
         (TRZECI, 'III'),
+        (CZWARTY, 'IV'),
+        (PIATY, 'V'),
+        (SZOSTY, 'VI'),
+        (SIODMY, 'VII'),
     )
+    SEM_NAMES = (
+        (PIERWSZY, 'pierwszy'),
+        (DRUGI, 'drugi'),
+        (TRZECI, 'trzeci'),
+        (CZWARTY, 'czwarty'),
+        (PIATY, 'piąty'),
+        (SZOSTY, 'szósty'),
+        (SIODMY, 'siódmy'),
+    )
+    STATIONARY = ((True, 'stacjonarne'), (False, 'niestacjonarne'))
+
     short_name = models.CharField(max_length=30)
     specialization = models.CharField(max_length=50)
-    stationary = models.BooleanField(default=True)
+    stationary = models.BooleanField(choices=STATIONARY, default=True)
     grade = models.CharField(max_length=1, choices=GRADES, default=PIERWSZY)
-    year_of_study = models.SmallIntegerField()
-    sem_nr = models.SmallIntegerField()
+    year_of_study = models.CharField(max_length=1, choices=GRADES, default=PIERWSZY)
+    sem_nr = models.CharField(max_length=1, choices=SEM_NAMES, default=PIERWSZY)
     semester = models.ForeignKey(Semester)
 
 

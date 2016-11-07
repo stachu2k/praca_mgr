@@ -12,16 +12,24 @@
     </div>
 
     <div data-role="main" class="ui-content">
-        <div style="font-size: smaller; text-align: right;">Aktualny semestr: <span style="font-style: italic;">2015/16l</span></div>
+
+        <div style="font-size: smaller; text-align: right;">Aktualny semestr: <span style="font-style: italic;">{% if semester %}{{ semester.academic_year }}{{ semester.sem_type }}{% else %}brak{% endif %}</span></div>
 
         <h4>Lista grup</h4>
 
         <ul data-role="listview">
-            <li><a href="#">
-                    <h2>II INF stac. I-go</h2>
-                    <p>Specjalistyczne języki programowe - Wykład</p>
-                </a>
-            </li>
+            {% if classes %}
+                {% for c in classes %}
+                    <li>
+                        <a href="{% url 'browse_group_show' c.group.id %}">
+                            <h2>{{ c.group.short_name }}</h2>
+                            <p>{{ c.subject }} - {{ c.get_classes_type_display }}</p>
+                        </a>
+                    </li>
+                {% endfor %}
+            {% else %}
+                <li style="text-align: center;">brak</li>
+            {% endif %}
         </ul>
     </div>
 

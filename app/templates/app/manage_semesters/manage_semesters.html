@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<!-- Browse Group Page -->
+<!-- Manage Semesters Page -->
 
 <div data-role="page" id="manage_semesters" data-title="{{ title }}">
 
@@ -16,9 +16,13 @@
         <h4>Lista semestrów</h4>
 
         <ul data-role="listview" data-inset="true">
-            {% for semester in semesters %}
-                <li><a href="#">{{ semester.academic_year }}{{ semester.sem_type }}<span class="ui-li-count">{{ semester.groups }}</span></a></li>
-            {% endfor %}
+            {% if semesters %}
+                {% for semester in semesters %}
+                    <li><a href="#">{{ semester.academic_year }}{{ semester.sem_type }}<span class="ui-li-count">{{ semester.groups }}</span></a></li>
+                {% endfor %}
+            {% else %}
+                <li style="text-align: center;">brak</li>
+            {% endif %}
         </ul>
     </div>
 
@@ -26,6 +30,6 @@
 
 </div>
 
-<!-- / Browse Group Page -->
+<!-- / Manage Semesters Page -->
 
 {% endblock content %}
