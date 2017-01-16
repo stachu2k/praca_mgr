@@ -1,4 +1,4 @@
-﻿{% extends "app/layout.html" %}
+﻿{% extends "app/shared/layout.html" %}
 
 {% block content %}
 
@@ -6,16 +6,19 @@
 
 <div data-role="page" id="add_group" data-title="{{ title }}">
 
+    {% include "app/shared/menu.panel.html" %}
+
     <div data-role="header" data-position="fixed">
-        <a href="#" class="ui-btn ui-btn-left ui-corner-all ui-shadow ui-icon-back ui-btn-icon-left" data-rel="back">Powrót</a>
+        {% include "app/shared/header.partial.left.html" %}
         <h1>{{ title }}</h1>
+        {% include "app/shared/header.partial.right.html" %}
     </div>
 
     <div data-role="main" class="ui-content">
         <p>{{ result_msg }}</p>
     </div>
 
-    {% include "app/include/footer.html" %}
+    {% include "app/shared/footer.html" %}
 
 </div>
 
