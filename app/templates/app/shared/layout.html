@@ -5,13 +5,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Praca Magisterska</title>
 <link rel="stylesheet" href="{% static 'mobile/jquery.mobile-1.4.5.css' %}" />
+<link rel="stylesheet" href="{% static 'css/jquery.mobile.custom.css' %}?v={% now "U" %}">
 <link rel="stylesheet" href="{% static 'css/site.css' %}?v={% now "U" %}">
-<script src="{% static 'scripts/jquery.js' %}"></script>
+<script src="{% static 'js/jquery.js' %}"></script>
 <script src="{% static 'mobile/jquery.mobile-1.4.5.js' %}"></script>
-<script src="{% static 'scripts/main.js' %}?v={% now "U" %}"></script>
-<script src="{% static 'scripts/semesters.js' %}?v={% now "U" %}"></script>
-<script src="{% static 'scripts/students.js' %}?v={% now "U" %}"></script>
-<script src="{% static 'scripts/register.js' %}?v={% now "U" %}"></script>
+<script src="{% static 'js/main.js' %}?v={% now "U" %}"></script>
+<script src="{% static 'js/semesters.js' %}?v={% now "U" %}"></script>
+<script src="{% static 'js/students.js' %}?v={% now "U" %}"></script>
+<script src="{% static 'js/register.js' %}?v={% now "U" %}"></script>
+<script src="{% static 'js/classes.js' %}?v={% now "U" %}"></script>
 </head>
 <body>{% block content %}{% endblock %}</body>
 </html>

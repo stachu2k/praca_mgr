@@ -2,13 +2,14 @@
 
 {% block content %}
 
-<!-- Browse Group Show Page -->
-
 <div data-role="page" id="browse_group_show" data-title="{{ title }}">
 
+    {% include "app/shared/menu.panel.html" %}
+
     <div data-role="header" data-position="fixed">
-        <a href="#" class="ui-btn ui-btn-left ui-corner-all ui-shadow ui-icon-back ui-btn-icon-left" data-rel="back">Powrót</a>
-        <h1>{{ title }}</h1>
+        {% include "app/shared/header.partial.left.html" %}
+        {% include "app/shared/header.partial.center.html" %}
+        {% include "app/shared/header.partial.right.html" %}
     </div>
 
     <div data-role="main" class="ui-content">
@@ -50,12 +51,12 @@
           </ul>
         </div>
 
+        <a href="{% url 'groups_classes' classes.group_id %}" class="ui-btn ui-corner-all ui-shadow ui-icon-action ui-btn-icon-left">Przejdź do zajęć</a>
+
     </div>
 
-    {% include "app/include/../shared/footer.html" %}
+    {% include "app/shared/footer.html" %}
 
 </div>
-
-<!-- / Browse Group Show Page -->
 
 {% endblock content %}

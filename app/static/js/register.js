@@ -30,9 +30,9 @@ function createRegister(date) {
 
         for(var c in classes) {
             cell = $('<div class="cell"></div>');
-            var classesbox = $('<div class="classes classes-' + classes[c].classes_type + '">' + classes[c].start_time + '-' +
-                classes[c].end_time + classes[c].classes_type + '<br>' + classes[c].subject + '<br>' +
-                classes[c].short_name + '</div>');
+            var classesbox = $('<a href="/groups/' + classes[c].id + '/classes" class="classes classes-' + classes[c].classes_type + '">' + classes[c].start_time + '-' +
+                classes[c].end_time + ' ' + classes[c].classes_type + '<br>' + classes[c].subject + '<br>' +
+                classes[c].short_name + '</a>');
             col.append(cell.append(classesbox));
         }
 

@@ -1,0 +1,89 @@
+{% extends "app/shared/layout.html" %}
+{% load addcss_tag %}
+
+{% block content %}
+
+<div data-role="page" id="browse_group_show" data-title="{{ title }}">
+
+    {% include "app/shared/menu.panel.html" %}
+
+    <div data-role="header" data-position="fixed">
+        {% include "app/shared/header.partial.left.html" %}
+        {% include "app/shared/header.partial.center.html" %}
+        {% include "app/shared/header.partial.right.html" %}
+    </div>
+
+    <div data-role="main" class="ui-content">
+        {% if result %}{{ result }}{% endif %}
+        <div class="table-wrapper">
+            <table border="1" class="topic-table" data-classes="{{ classes.group_id }}">
+                <thead>
+                    <tr>
+                        <th colspan="3">Tematy zajęć i komentarze</th>
+                    </tr>
+                    <tr>
+                        <th style="width: 10%;">Data</th>
+                        <th style="width: 45%;">Temat</th>
+                        <th style="width: 45%;">Komentarz</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for date in classes_dates %}
+                    <tr>
+                        <td style="width: 10%;">
+                            {% if date.date.day < 10 %}0{% endif %}{{ date.date.day }}.{% if date.date.month < 10 %}0{% endif %}{{ date.date.month }}
+                        </td>
+                        <td onclick="editTopic(this, {{ date.id }})" style="width: 45%;">{{ date.topic.topic }}</td>
+                        <td onclick="editComment(this, {{ date.id }})" style="width: 45%;">{{ date.comment.comment }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <div data-role="popup" class="ui-content" id="edit_topic">
+            <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn ui-icon-delete ui-btn-icon-notext ui-btn-right">Zamknij</a>
+            <form action="#" method="post" id="edit_topic_form">
+                {% csrf_token %}
+                <p>Edytuj temat:</p>
+                <textarea cols="50" name="value"></textarea>
+                <input type="submit" name="submit" value="Zapisz">
+            </form>
+        </div>
+
+        <div data-role="popup" class="ui-content" id="edit_comment">
+            <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn ui-icon-delete ui-btn-icon-notext ui-btn-right">Zamknij</a>
+            <form action="#" method="post" id="edit_comment_form">
+                {% csrf_token %}
+                <p>Edytuj komentarz:</p>
+                <textarea cols="50" name="value"></textarea>
+                <input type="submit" name="submit" value="Zapisz">
+            </form>
+        </div>
+
+        <div data-role="collapsible" data-mini="true" data-collapsed-icon="carat-d" data-expanded-icon="carat-u" data-iconpos="right">
+            <h1>Importuj tematy</h1>
+            <form enctype="multipart/form-data" action="{% url 'groups_classes' classes.group_id %}" method="post" data-ajax="false">
+                {% csrf_token %}
+                {% for field in import_topics_form %}
+                    <div class="ui-field-contain">
+                        {{ field.label_tag }}
+                        {% if field.errors %}
+                            {{ field|addcss:"input-validation-error" }}
+                            {{ field.errors }}
+                        {% else %}
+                            {{ field }}
+                        {% endif %}
+                    </div>
+                {% endfor %}
+                {{ import_topics_form.non_field_errors }}
+                <input type="submit" value="Importuj">
+            </form>
+        </div>
+    </div>
+
+    {% include "app/shared/footer.html" %}
+
+</div>
+
+{% endblock content %}

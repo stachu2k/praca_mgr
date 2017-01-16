@@ -4,7 +4,7 @@
     clear: both;
 }
 
-/* styles for validation helpers */
+/* Styles for validation helpers */
 .field-validation-error {
     color: #b94a48;
 }
@@ -53,17 +53,11 @@ input[type="checkbox"].input-validation-error {
     padding: 20px 0;
 }
 
-#result-box {
-    text-align: center;
-    color: #47a447;
-}
-
 .loading {
     text-align: center;
 }
 
-/* styles for group summary */
-
+/* Styles for groups */
 .summary-title {
     display: block;
     margin-top: 6px;
@@ -94,8 +88,7 @@ input[type="checkbox"].input-validation-error {
     padding-left: 10px;
 }
 
-/* styles for register */
-
+/* Styles for register */
 .register-wrapper {
     background-color: #e9e9e9;
 }
@@ -109,9 +102,17 @@ input[type="checkbox"].input-validation-error {
     height: 46px;
     text-align: center;
 }
+.register-container > div.header::before {
+    content: '';
+    height: 100%;
+    vertical-align: middle;
+    display: inline-block;
+}
 
 .register-container > div.header > .title {
-    line-height: 46px;
+    font-size: smaller;
+    vertical-align: middle;
+    display: inline-block;
 }
 
 .register-container > div.header > a.left {
@@ -126,30 +127,28 @@ input[type="checkbox"].input-validation-error {
 
 .register-container > .table {
     background-color: #ffffff;
+    height: calc(100vh - 58px - 44px - 32px - 46px);
 }
 
 .register-container > .table > .col {
+    border-left: 1px solid black;
     float: left;
-    width: 19.2%;
+    width: 20%;
+    height: 100%;
+    box-sizing: border-box;
 }
 
-.register-container > .table > .col.hours {
-    width: 4%;
+.register-container > .table > .col:first-child {
     border-left: 0;
-    font-size: smaller;
 }
 
 .register-container > .table > .col > .cell {
-    height: 60px;
-    border-top: 1px solid black;
-    border-left: 1px solid black;
+    border-bottom: 1px solid black;
 }
 
 .register-container > .table > .col > .cell:first-child {
-    border-top: 0;
     font-weight: bold;
     text-align: center;
-    line-height: 60px;
 }
 
 .register-container > .table > .col > .cell:first-child > span {
@@ -158,51 +157,13 @@ input[type="checkbox"].input-validation-error {
     vertical-align: middle;
 }
 
-.register-container > .table > .col.hours > .cell {
+.register-container > .table > .col:first-child > .cell {
     border-left: 0;
-}
-
-@media screen and (max-width: 1430px) {
-    .register-container > .table > .col {
-        width: 19%;
-    }
-
-    .register-container > .table > .col.hours {
-        width: 5%;
-    }
-}
-
-@media screen and (max-width: 1220px) {
-    .register-container > .table > .col {
-        width: 18.6%;
-    }
-
-    .register-container > .table > .col.hours {
-        width: 7%;
-    }
 }
 
 @media screen and (max-width: 1000px) {
     .register-container > .table > .col {
-        width: 22.75%;
-    }
-
-    .register-container > .table > .col.hours {
-        width: 9%;
-    }
-
-    .register-container > .table > .col:nth-child(6) {
-        display: none;
-    }
-}
-
-@media screen and (max-width: 850px) {
-    .register-container > .table > .col {
-        width: 30%;
-    }
-
-    .register-container > .table > .col.hours {
-        width: 10%;
+        width: 25%;
     }
 
     .register-container > .table > .col:nth-child(5) {
@@ -210,13 +171,13 @@ input[type="checkbox"].input-validation-error {
     }
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 850px) {
     .register-container > .table > .col {
-        width: 44%;
+        width: 33.3%;
     }
 
     .register-container > .table > .col.hours {
-        width: 12%;
+        width: 10%;
     }
 
     .register-container > .table > .col:nth-child(4) {
@@ -224,13 +185,9 @@ input[type="checkbox"].input-validation-error {
     }
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 700px) {
     .register-container > .table > .col {
-        width: 86%;
-    }
-
-    .register-container > .table > .col.hours {
-        width: 14%;
+        width: 50%;
     }
 
     .register-container > .table > .col:nth-child(3) {
@@ -238,51 +195,79 @@ input[type="checkbox"].input-validation-error {
     }
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 500px) {
     .register-container > .table > .col {
-        width: 84%;
+        width: 100%;
     }
 
-    .register-container > .table > .col.hours {
-        width: 16%;
+    .register-container > .table > .col:nth-child(2) {
+        display: none;
     }
 }
 
-/*
-
-.register-container > table {
-    width: 100%;
-    background-color: white;
-    border: 0;
-    border-collapse: collapse;
-    border-spacing: 0;
-}
-
-.register-container > table tr {
-    border-top: 1px solid black;
-}
-
-.register-container > table tr td, .register-container > table tr th {
-    height: 60px;
-    padding: 0;
-    border-left: 1px solid black;
-}
-
-.register-container table tr td:first-child, .register-container table tr th:first-child {
-    border-left: none;
-}
-
-.register-container > table thead tr {
-    border-top: none;
-}
-
-.register-container > table th {
+.register-container > .table > .col > .cell > a.classes {
+    color: #000000;
     font-weight: normal;
+    display: block;
+    margin: 2px;
+    border: solid 3px;
+    padding: 2px;
+    text-decoration: none;
 }
 
-.register-container > table tbody th {
-    vertical-align: top;
+.register-container > .table > .col > .cell > .classes-WYK {
+    border-color: green !important;
+}
+
+.register-container > .table > .col > .cell > .classes-CW {
+    border-color: #fff9c2 !important;
+}
+
+.register-container > .table > .col > .cell > .classes-LAB {
+    border-color: blue !important;
+}
+
+.register-container > .table > .col > .cell > .classes-PR {
+    border-color: yellow !important;
+}
+
+.register-container > .table > .col > .cell > .classes-SEM {
+    border-color: red !important;
+}
+
+/* Styles for classes */
+.table-wrapper {
+    overflow-x: scroll;
+}
+
+.topic-table {
+    width: 100%;
+    font-size: 12px;
+    min-width: 500px;
+}
+
+.topic-table th {
     text-align: left;
-    padding: 3px 0 0 3px;
-    font-size: smaller;
-}*/
+}
+
+.topic-table th,
+.topic-table td {
+    padding: 5px;
+}
+
+.topic-table a {
+    display: block;
+    margin: -5px;
+    padding: 5px;
+    color: #000000;
+    font-weight: normal;
+    text-decoration: none;
+}
+
+.topic-table a:hover {
+    color: #000000;
+}
+
+.topic-table a:visited {
+    color: #000000;
+}

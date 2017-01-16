@@ -1,10 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+<div data-role="panel" id="sidepanel" data-display="overlay" data-position="right">
+    <ul data-role="listview" class="app-menu">
+            <li data-icon="delete"><a href="#" data-rel="close">&nbsp;</a></li>
+            <li data-icon="home"><a href="{% url 'home' %}">Home</a></li>
+            <li data-icon="action"><a href="{% url 'logout' %}">Wyloguj</a></li>
+            <li data-role="list-divider">Menu aplikacji</li>
+            <li data-icon="false"><a href="{% url 'register' %}">Dziennik</a></li>
+            <li data-icon="false"><a href="{% url 'groups' %}">Przeglądaj grupy</a></li>
+            <li data-icon="false"><a href="{% url 'groups_add' %}">Dodaj grupę</a></li>
+            <li data-icon="false"><a href="{% url 'semesters' %}">Zarządzaj semestrami</a></li>
+        </ul>
+</div>

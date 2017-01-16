@@ -25,3 +25,11 @@ class AddGroupForm(forms.Form):
 
     upload_grp = forms.FileField(label="Wybierz plik danych z grupą (.grp)", validators=[validate_upload_grp_ext])
     upload_sem = forms.FileField(label="Wybierz plik danych semestru (.sem)", validators=[validate_upload_sem_ext])
+
+
+class ImportTopicsForm(forms.Form):
+    def validate_upload_lst_ext(value):
+        if not value.name.endswith('.lst'):
+            raise ValidationError('Złe rozszerzenie pliku.')
+
+    upload_topic = forms.FileField(label="Wybierz plik (.lst)", validators=[validate_upload_lst_ext])

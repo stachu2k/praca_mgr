@@ -3,17 +3,18 @@
 
 {% block content %}
 
-<!-- Add Group Page -->
-
 <div data-role="page" id="add_group" data-title="{{ title }}">
 
+    {% include "app/shared/menu.panel.html" %}
+
     <div data-role="header" data-position="fixed">
-        <a href="#" class="ui-btn ui-btn-left ui-corner-all ui-shadow ui-icon-back ui-btn-icon-left" data-rel="back">Powrót</a>
+        {% include "app/shared/header.partial.left.html" %}
         <h1>{{ title }}</h1>
+        {% include "app/shared/header.partial.right.html" %}
     </div>
 
     <div data-role="main" class="ui-content">
-        <form enctype="multipart/form-data" action="/add_group/" method="post" data-ajax="false">
+        <form enctype="multipart/form-data" action="{% url 'groups_add' %}" method="post" data-ajax="false">
             {% csrf_token %}
             {% for field in add_group_form %}
             <div class="ui-field-contain">
@@ -21,7 +22,7 @@
                 {% if field.errors %}
                     {{ field|addcss:"input-validation-error" }}
                     {{ field.errors }}
-                {%  else %}
+                {% else %}
                     {{ field }}
                 {% endif %}
             </div>
@@ -31,10 +32,8 @@
         </form>
     </div>
 
-    {% include "app/include/../shared/footer.html" %}
+    {% include "app/shared/footer.html" %}
 
 </div>
-
-<!-- / Add Group Page -->
 
 {% endblock content %}

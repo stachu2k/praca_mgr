@@ -2,28 +2,41 @@
 
 {% block content %}
 
-<!-- Browse Group Page -->
-
 <div data-role="page" id="browse_group" data-title="{{ title }}">
 
+    {% include "app/shared/menu.panel.html" %}
+
     <div data-role="header" data-position="fixed">
-        <a href="#" class="ui-btn ui-btn-left ui-corner-all ui-shadow ui-icon-back ui-btn-icon-left" data-rel="back">Powrót</a>
-        <h1>{{ title }}</h1>
+        {% include "app/shared/header.partial.left.html" %}
+        {% include "app/shared/header.partial.center.html" %}
+        {% include "app/shared/header.partial.right.html" %}
     </div>
 
     <div data-role="main" class="ui-content">
 
-        <div style="font-size: smaller; text-align: right;">Aktualny semestr: <span style="font-style: italic;">{% if semester %}{{ semester.academic_year }}{{ semester.sem_type }}{% else %}brak{% endif %}</span></div>
-
         <h4>Lista grup</h4>
 
-        <ul data-role="listview">
-            {% if classes %}
-                {% for c in classes %}
+        <ul data-role="listview" class="grouplist">
+            <li data-role="list-divider">stacjonarne</li>
+            {% if classes_stationary %}
+                {% for classes in classes_stationary %}
                     <li>
-                        <a href="{% url 'browse_group_show' c.group.id %}">
-                            <h2>{{ c.group.short_name }}</h2>
-                            <p>{{ c.subject }} - {{ c.get_classes_type_display }}</p>
+                        <a href="{% url 'groups_details' classes.group.id %}">
+                            <h2>{{ classes.group.short_name }}</h2>
+                            <p>{{ classes.subject }} - {{ classes.get_classes_type_display }}</p>
+                        </a>
+                    </li>
+                {% endfor %}
+            {% else %}
+                <li style="text-align: center;">brak</li>
+            {% endif %}
+            <li data-role="list-divider">niestacjonarne</li>
+            {% if classes_stationary %}
+                {% for classes in classes_notstationary %}
+                    <li>
+                        <a href="{% url 'groups_details' classes.group.id %}">
+                            <h2>{{ classes.group.short_name }}</h2>
+                            <p>{{ classes.subject }} - {{ classes.get_classes_type_display }}</p>
                         </a>
                     </li>
                 {% endfor %}
@@ -33,10 +46,8 @@
         </ul>
     </div>
 
-    {% include "app/include/../shared/footer.html" %}
+    {% include "app/shared/footer.html" %}
 
 </div>
-
-<!-- / Browse Group Page -->
 
 {% endblock content %}

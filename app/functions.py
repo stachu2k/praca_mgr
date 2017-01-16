@@ -1,5 +1,5 @@
-from .models import Semester, Group, Classes, ClassesDate, Student
-import datetime
+from .models import Semester, Group, Classes, ClassesDate, Student, Topic
+from .helpers import *
 
 
 def create_group_from_files(upload_grp, upload_sem):
@@ -62,7 +62,9 @@ def create_group_from_files(upload_grp, upload_sem):
             grade=grade_arabic,
             year_of_study=year_of_study_arabic,
             sem_nr=sem_nr,
-            semester=semester
+            semester=semester,
+            classes__subject=subject,
+            classes__classes_type=get_classes_type(classes_type)
         )
         return "Taka grupa już istnieje."
     except Group.DoesNotExist:
@@ -88,8 +90,12 @@ def create_group_from_files(upload_grp, upload_sem):
         classes.save()
 
         if studies_type == 'niestacjonarne':
-            for i, date in enumerate(not_stationary_dates, start=1):
-                ClassesDate(date=str_to_date(date), nr_of_week=i, classes=classes).save()
+            if str_to_date(first_date) == str_to_date(not_stationary_dates[0]):
+                for i, date in enumerate(not_stationary_dates, start=1):
+                    ClassesDate(date=str_to_date(date), nr_of_week=i, classes=classes).save()
+            else:
+                for i, date in enumerate(not_stationary_dates, start=1):
+                    ClassesDate(date=str_to_date(date) + datetime.timedelta(days=1), nr_of_week=i, classes=classes).save()
         else:
             current_date = str_to_date(first_date)
             max_date = str_to_date(last_day_sem)
@@ -102,6 +108,8 @@ def create_group_from_files(upload_grp, upload_sem):
                 i += 1
                 if (current_date < holiday_start or current_date > holiday_end) and (current_date not in day_off_dates):
                     ClassesDate(date=current_date, nr_of_week=i, classes=classes).save()
+                else:
+                    i -= 1
                 current_date = current_date + datetime.timedelta(days=7)
 
         for student in students:
@@ -121,56 +129,20 @@ def create_group_from_files(upload_grp, upload_sem):
         return "Pomyślnie utworzono grupę."
 
 
-def roman_to_arabic(value):
-    choices = {'I': '1', 'II': '2', 'III': '3', 'IV': '4', 'V': '5', 'VI': '6'}
-    return choices.get(value, '1')
+def import_topics(group_id, upload_topic):
+    uploaded_lines = upload_topic.readlines()
+    uploaded_list = []
 
+    classesdates_size = ClassesDate.objects.filter(classes_id=group_id).count()
 
-def is_stationary(value):
-    if value == 'stacjonarne':
-        return True
-    elif value == 'niestacjonarne':
-        return False
+    if classesdates_size < len(uploaded_lines):
+        return "Za mało zajęć."
     else:
-        return True
+        for i, line in enumerate(uploaded_lines, start=1):
+            line = (line.decode('utf-8')).strip()
+            topic, created = Topic.objects.update_or_create(
+                classesdate=ClassesDate.objects.get(classes_id=group_id, nr_of_week=i),
+                defaults={'topic': line}
+            )
 
-
-def get_sem_type(value):
-    choices = {'letni': 'l', 'zimowy': 'z'}
-    return choices.get(value, 'z')
-
-
-def get_classes_type(value):
-    choices = {
-        'WYKŁAD': 'WYK',
-        'ĆWICZENIA': 'CW',
-        'LABORATORIUM': 'LAB',
-        'PROJEKT': 'PR',
-        'SEMINARIUM': 'SEM'
-    }
-    return choices.get(value, 'WYK')
-
-
-def str_to_date(value):
-    return datetime.datetime.strptime(value, "%Y-%m-%d")
-
-
-def str_to_time(value):
-    return datetime.datetime.strptime(value, "%H:%M")
-
-
-def get_short_name(specialization, studies_type, grade, year_of_study, sem_nr):
-    spec_list = {
-        'Inżynieria biomedyczna': 'IBM',
-        'Automatyka i Robotyka': 'AiR',
-        'Elektronika i Telekomunikacja': 'EiT',
-        'Elektronika Przemysłowa': 'EP',
-        'Elektrotechnika': 'ELE',
-        'Informatyka': 'INF',
-        'Technologie energetyki odnawialnej': 'TEO'
-    }
-
-    stac_or_ns = {True: 'stac.', False: 'ns.'}
-
-    return "{0} {1} {2} {3}-go st. (sem. {4})".format(year_of_study, spec_list.get(specialization, specialization),
-                                         stac_or_ns.get(studies_type, True), grade, sem_nr)
+    return "Zaimportowano tematy."

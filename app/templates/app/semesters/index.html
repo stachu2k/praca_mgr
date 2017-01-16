@@ -2,13 +2,14 @@
 
 {% block content %}
 
-<!-- Manage Semesters Page -->
-
 <div data-role="page" id="manage_semesters" data-title="{{ title }}">
 
+    {% include "app/shared/menu.panel.html" %}
+
     <div data-role="header" data-position="fixed">
-        <a href="#" class="ui-btn ui-btn-left ui-corner-all ui-shadow ui-icon-back ui-btn-icon-left" data-rel="back">Powrót</a>
+        {% include "app/shared/header.partial.left.html" %}
         <h1>{{ title }}</h1>
+        {% include "app/shared/header.partial.right.html" %}
     </div>
 
     <div data-role="main" class="ui-content">
@@ -26,10 +27,8 @@
         </ul>
     </div>
 
-    {% include "app/include/../shared/footer.html" %}
+    {% include "app/shared/footer.html" %}
 
 </div>
-
-<!-- / Manage Semesters Page -->
 
 {% endblock content %}

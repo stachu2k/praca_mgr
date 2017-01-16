@@ -2,23 +2,26 @@
 
 {% block content %}
 
-<!-- Home Page -->
-
 <div data-role="page" id="home">
 
-    {% include "app/include/header.html" %}
-
-    <div data-role="main" class="ui-content">
-        <a href="{% url 'register' %}" class="ui-btn ui-corner-all ui-shadow">Dziennik</a>
-        <a href="{% url 'browse_group' %}" class="ui-btn ui-corner-all ui-shadow">Przeglądaj grupy</a>
-        <a href="{% url 'add_group' %}" class="ui-btn ui-corner-all ui-shadow">Dodaj grupę</a>
-        <a href="{% url 'manage_semesters' %}" class="ui-btn ui-corner-all ui-shadow">Zarządzaj semestrami</a>
+    <div data-role="header" data-position="fixed">
+        <h1>{{ title }}</h1>
     </div>
 
-    {% include "app/include/footer.html" %}
+    <div data-role="main" class="ui-content">
+        <ul data-role="listview" class="app-menu">
+            <li data-role="list-divider">Menu aplikacji</li>
+            <li><a href="{% url 'register' %}">Dziennik</a></li>
+            <li><a href="{% url 'groups' %}">Przeglądaj grupy</a></li>
+            <li><a href="{% url 'groups_add' %}">Dodaj grupę</a></li>
+            <li><a href="{% url 'semesters' %}">Zarządzaj semestrami</a></li>
+            <li data-role="list-divider">&nbsp;</li>
+            <li><a href="{% url 'logout' %}">Wyloguj</a></li>
+        </ul>
+    </div>
+
+    {% include "app/shared/footer.html" %}
 
 </div>
-
-<!-- / Home Page -->
 
 {% endblock content %}

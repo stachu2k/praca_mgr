@@ -1,10 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+<h1 class="new-title">
+    {{ title }}
+    <div class="pagesubtitle">
+        akt. semestr: {% if semester %}{{ semester.academic_year }}{{ semester.sem_type }}{% else %}brak{% endif %}
+    </div>
+</h1>

@@ -96,4 +96,14 @@ class Presence(models.Model):
     )
     presence_type = models.CharField(max_length=3, choices=PRESENCE_CHOICES)
     student = models.ForeignKey(Student)
-    classes_date = models.ForeignKey(ClassesDate)
+    classesdate = models.ForeignKey(ClassesDate)
+
+
+class Topic(models.Model):
+    topic = models.TextField()
+    classesdate = models.OneToOneField(ClassesDate, primary_key=True)
+
+
+class Comment(models.Model):
+    comment = models.TextField()
+    classesdate = models.OneToOneField(ClassesDate, primary_key=True)
