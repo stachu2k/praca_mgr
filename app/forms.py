@@ -6,12 +6,12 @@ from django.core.exceptions import ValidationError
 
 class CustomAuthenticationForm(AuthenticationForm):
     """Authentication form."""
-    username = forms.CharField(max_length=254, label="Nazwa użytkownika",
+    username = forms.CharField(label="Nazwa użytkownika",
                                widget=forms.TextInput({
                                    'placeholder': 'Wpisz nazwę użytkownika'}))
     password = forms.CharField(label="Hasło",
                                widget=forms.PasswordInput({
-                                   'placeholder':'Wpis hasło'}))
+                                   'placeholder': 'Wpis hasło'}))
 
 
 class AddGroupForm(forms.Form):
