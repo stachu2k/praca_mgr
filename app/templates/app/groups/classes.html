@@ -1,9 +1,10 @@
 {% extends "app/shared/layout.html" %}
+{% load static %}
 {% load addcss_tag %}
 
 {% block content %}
 
-<div data-role="page" id="browse_group_show" data-title="{{ title }}">
+<div data-role="page" id="classes" data-title="{{ title }}">
 
     {% include "app/shared/menu.panel.html" %}
 
@@ -16,7 +17,7 @@
     <div data-role="main" class="ui-content">
         {% if result %}{{ result }}{% endif %}
         <div class="table-wrapper">
-            <table border="1" class="topic-table" data-classes="{{ classes.group_id }}">
+            <table border="1" class="topic-table" data-classes="{{ classes.group_id }}" id="topic_comment_table">
                 <thead>
                     <tr>
                         <th colspan="3">Tematy zajęć i komentarze</th>
@@ -78,6 +79,97 @@
                 {% endfor %}
                 {{ import_topics_form.non_field_errors }}
                 <input type="submit" value="Importuj">
+            </form>
+        </div>
+
+        <div class="table-wrapper">
+            <table border="1" class="presence-table" data-classes="{{ classes.group_id }}" id="id_presence_table">
+                <thead>
+                    <tr>
+                        <th>Student</th>
+                        {% for date in classes_dates %}
+                            <th onclick="checkPresence({{ date.id }})">
+                                {% if date.date.day < 10 %}0{% endif %}{{ date.date.day }}.{% if date.date.month < 10 %}0{% endif %}{{ date.date.month }}
+                            </th>
+                        {% endfor %}
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for student in students %}
+                    <tr>
+                        <td style="white-space:nowrap">
+                            {{ student.surname }} {{ student.name }}
+                        </td>
+                        {% for date in classes_dates %}
+                        <td onclick="editPresence(this, {{ student.id }}, {{ date.id }})">
+                            {% for presence in presences %}
+                                {% if presence.student == student and presence.classesdate == date %}
+                                    {% if not presence.presence_type == 'N/A' %}
+                                        <div class="{{ presence.presence_type }}">
+                                            {% for note in notes %}
+                                                {% if note.student == student and note.classesdate == date %}
+                                                    <img style="float:left" src="{% static 'mobile/images/icons-png/info-black.png' %}">
+                                                    <textarea style="display:none">{{ note.text }}</textarea>
+                                                {% endif %}
+                                            {% endfor %}
+                                            {{ presence.presence_type }}
+                                        </div>
+                                    {% else %}
+                                        {{ presence.presence_type }}
+                                    {% endif %}
+                                {% endif %}
+                            {% endfor %}
+                        </td>
+                        {% endfor %}
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <div data-role="popup" class="ui-content" id="check_presence">
+            <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn ui-icon-delete ui-btn-icon-notext ui-btn-right">Zamknij</a>
+            <div style="height: 350px; overflow-y: auto">
+                <form action="#" method="post" id="check_presence_form">
+                    {% csrf_token %}
+                    <h3>Sprawdź obecność</h3>
+                    <fieldset data-role="controlgroup">
+                        <input type="button" name="all_present" id="id_all_present" value="Wszyscy obecni">
+                        <input type="button" name="all_absent" id="id_all_absent" value="Wszyscy nieobecni">
+                    </fieldset>
+                    <fieldset data-role="controlgroup">
+                        <label for="id_no_classes">Zajęcia nie odbyły się</label>
+                        <input type="checkbox" name="no_classes" id="id_no_classes" value="no_classes">
+                    </fieldset>
+                    <fieldset data-role="controlgroup">
+                        {% for student in students %}
+                        <label for="id_student_{{ student.id }}">{{ student.surname }} {{ student.name }}</label>
+                        <input type="checkbox" name="students" id="id_student_{{ student.id }}" value="{{ student.id }}">
+                        {% endfor %}
+                    </fieldset>
+                    <input type="submit" name="submit" value="Zapisz">
+                </form>
+            </div>
+        </div>
+
+        <div data-role="popup" class="ui-content" id="edit_presence">
+            <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn ui-icon-delete ui-btn-icon-notext ui-btn-right">Zamknij</a>
+            <form action="#" method="post" id="edit_presence_form">
+                {% csrf_token %}
+                <h3>Edytuj obecność studenta</h3>
+                <fieldset data-role="controlgroup">
+                    <label for="id_o">obecny</label>
+                    <input type="radio" name="presence" class="rb" id="id_o" value="o">
+                    <label for="id_n">nieobecny</label>
+                    <input type="radio" name="presence" class="rb" id="id_n" value="n">
+                    <label for="id_s">spóźniony</label>
+                    <input type="radio" name="presence" class="rb" id="id_s" value="s">
+                    <label for="id_u">usprawiedliwiony</label>
+                    <input type="radio" name="presence" class="rb" id="id_u" value="u">
+                    <h3>Edytuj notatkę:</h3>
+                    <textarea cols="50" name="value"></textarea>
+                </fieldset>
+                <input type="submit" name="submit" value="Zapisz">
             </form>
         </div>
     </div>

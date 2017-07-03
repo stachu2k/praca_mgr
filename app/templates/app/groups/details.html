@@ -18,19 +18,19 @@
 
         <span class="summary-title">Podsumowanie:</span>
         <div class="summary-box">
-            <div class="row"><div><span style="font-weight: bold">Kierunek:</span></div><div>{{ classes.group.specialization }}</div></div>
-            <div class="row"><div><span style="font-weight: bold">Studia:</span></div><div>{{ classes.group.get_stationary_display }}</div></div>
-            <div class="row"><div><span style="font-weight: bold">Stopień:</span></div><div>{{ classes.group.get_grade_display }}</div></div>
-            <div class="row"><div><span style="font-weight: bold">Rok studiów:</span></div><div>{{ classes.group.get_year_of_study_display }}</div></div>
-            <div class="row"><div><span style="font-weight: bold">Semestr:</span></div><div>{{ classes.group.get_sem_nr_display }}</div></div>
+            <div class="row"><div><b>Kierunek:</b></div><div>{{ classes.group.specialization }}</div></div>
+            <div class="row"><div><b>Studia:</b></div><div>{{ classes.group.get_stationary_display }}</div></div>
+            <div class="row"><div><b>Stopień:</b></div><div>{{ classes.group.get_grade_display }}</div></div>
+            <div class="row"><div><b>Rok studiów:</b></div><div>{{ classes.group.get_year_of_study_display }}</div></div>
+            <div class="row"><div><b>Semestr:</b></div><div>{{ classes.group.get_sem_nr_display }}</div></div>
         </div>
 
         <span class="summary-title">Zapisana na zajęcia:</span>
         <div class="summary-box">
-            <div class="row"><div><span style="font-weight: bold">Przedmiot:</span></div><div>{{ classes.subject }}</div></div>
-            <div class="row"><div><span style="font-weight: bold">Typ:</span></div><div>{{ classes.get_classes_type_display }}</div></div>
-            <div class="row"><div><span style="font-weight: bold">Godziny zajęć:</span></div><div>{{ classes.start_time }} - {{ classes.end_time }}</div></div>
-            <div class="row"><div><span style="font-weight: bold">Sala:</span></div><div>{{ classes.place }}</div></div>
+            <div class="row"><div><b>Przedmiot:</b></div><div>{{ classes.subject }}</div></div>
+            <div class="row"><div><b>Typ:</b></div><div>{{ classes.get_classes_type_display }}</div></div>
+            <div class="row"><div><b>Godziny zajęć:</b></div><div>{{ classes.start_time }} - {{ classes.end_time }}</div></div>
+            <div class="row"><div><b>Sala:</b></div><div>{{ classes.place }}</div></div>
         </div>
 
         <div data-role="collapsible" data-collapsed-icon="arrow-d" data-expanded-icon="arrow-u">

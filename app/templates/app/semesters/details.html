@@ -1,0 +1,26 @@
+{% extends "app/shared/layout.html" %}
+
+{% block content %}
+
+<div data-role="page" data-dialog="true" id="sem_details" data-title="{{ title }}">
+    <div data-role="header" data-position="fixed" role="banner" class="ui-header ui-bar-inherit ui-header-fixed slidedown">
+        <a href="{% url 'semesters' %}" class="ui-btn ui-corner-all ui-icon-delete ui-btn-icon-notext ui-btn-left">Close</a>
+        <h1 class="ui-title" role="heading" aria-level="1">{{ title }}</h1>
+    </div>
+    <div data-role="main" class="ui-content">
+        <b>Rok akademicki:</b> {{ semester.academic_year }} <br>
+        <b>Rodzaj:</b> {{ semester.get_sem_type_display }} <br>
+        <b>Liczba grup:</b> {{ group_count }} <br>
+        <b>Stan:</b> {% if semester.active %}<span style="color:green">aktywny</span>{% else %}nieaktywny{% endif %}
+        <div class="ui-grid-a">
+          <div class="ui-block-a">
+            <a href="{% url 'semesters_activate' semester.id %}" class="ui-btn ui-btn-b ui-corner-all ui-shadow ui-icon-check ui-btn-icon-left">Aktywuj</a>
+          </div>
+          <div class="ui-block-b">
+            <a href="{% url 'semesters_delete' semester.id %}" class="ui-btn ui-corner-all ui-shadow ui-icon-delete ui-btn-icon-left">Usuń</a>
+          </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

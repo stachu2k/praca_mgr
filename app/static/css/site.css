@@ -29,6 +29,14 @@ input[type="checkbox"].input-validation-error {
     display: none;
 }
 
+.error {
+    color: #b94a48;
+}
+
+.success {
+    color: green;
+}
+
 .errorlist {
     list-style: none;
     margin: 0;
@@ -240,21 +248,26 @@ input[type="checkbox"].input-validation-error {
     overflow-x: scroll;
 }
 
+.presence-table,
 .topic-table {
     width: 100%;
     font-size: 12px;
     min-width: 500px;
 }
 
+.presence-table th,
 .topic-table th {
     text-align: left;
 }
 
+.presence-table th,
+.presence-table td,
 .topic-table th,
 .topic-table td {
     padding: 5px;
 }
 
+.presence-table a,
 .topic-table a {
     display: block;
     margin: -5px;
@@ -264,10 +277,37 @@ input[type="checkbox"].input-validation-error {
     text-decoration: none;
 }
 
+.presence-table a:hover,
 .topic-table a:hover {
     color: #000000;
 }
 
+.presence-table a:visited,
 .topic-table a:visited {
     color: #000000;
+}
+
+.presence-table tbody td {
+    text-align: center;
+}
+
+.presence-table tbody div {
+    margin: -5px;
+    padding: 5px;
+}
+
+.presence-table tbody div.O {
+    background-color: #a1ffc1;
+}
+
+.presence-table tbody div.N {
+    background-color: #ffc3bc;
+}
+
+.presence-table tbody div.S {
+    background-color: #fbffb2;
+}
+
+.presence-table tbody div.U {
+    background-color: #cce8ff;
 }

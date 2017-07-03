@@ -1,8 +1,17 @@
-/**
+/*
  * Created by Paweł on 05.09.2016.
  * This file contains script for handling semesters in application.
- */
+*/
 
+$(document).on("pageshow","#sem_del_res",function(){
+
+   window.setTimeout(function(){
+        $.mobile.changePage('/semesters/');
+    }, 1500);
+
+});
+
+/*
 $(document).ready(function(){
     $('#new-semester-form').on("submit", function(event){
         $('#sem-result-box').html("");
@@ -172,4 +181,4 @@ function addNewSemester() {
 
 function cleanNewSemesterPage() {
     $('#sem-result-box').html("");
-}
+}*/

@@ -90,11 +90,13 @@ class Presence(models.Model):
     NIEOBECNY = 'N'
     SPOZNIONY = 'S'
     USPRAWIEDLIWIONY = 'U'
+    BRAK_ZAJEC = 'N/A'
     PRESENCE_CHOICES = (
         (OBECNY, 'obecny'),
         (NIEOBECNY, 'nieobecny'),
         (SPOZNIONY, 'spóźniony'),
         (USPRAWIEDLIWIONY, 'usprawiedliwiony'),
+        (BRAK_ZAJEC, 'zajęcia odwołane'),
     )
     presence_type = models.CharField(max_length=3, choices=PRESENCE_CHOICES)
     student = models.ForeignKey(Student)
@@ -109,3 +111,9 @@ class Topic(models.Model):
 class Comment(models.Model):
     comment = models.TextField()
     classesdate = models.OneToOneField(ClassesDate, primary_key=True)
+
+
+class Note(models.Model):
+    text = models.TextField()
+    student = models.ForeignKey(Student)
+    classesdate = models.ForeignKey(ClassesDate)

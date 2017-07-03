@@ -66,7 +66,7 @@ def create_group_from_files(upload_grp, upload_sem):
             classes__subject=subject,
             classes__classes_type=get_classes_type(classes_type)
         )
-        return "Taka grupa już istnieje."
+        return {'msg': "Taka grupa już istnieje.", 'error': True}
     except Group.DoesNotExist:
         group = Group(
             short_name=get_short_name(specialization, is_stationary(studies_type), grade, year_of_study, sem_nr),
@@ -126,7 +126,7 @@ def create_group_from_files(upload_grp, upload_sem):
             semester.active = True
             semester.save()
 
-        return "Pomyślnie utworzono grupę."
+        return {'msg': "Pomyślnie utworzono grupę.", 'error': False}
 
 
 def import_topics(group_id, upload_topic):

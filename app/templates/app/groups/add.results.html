@@ -2,21 +2,11 @@
 
 {% block content %}
 
-<div data-role="page" id="add_group" data-title="{{ title }}">
-
-    {% include "app/shared/menu.panel.html" %}
-
-    <div data-role="header" data-position="fixed">
-        {% include "app/shared/header.partial.left.html" %}
-        <h1>{{ title }}</h1>
-        {% include "app/shared/header.partial.right.html" %}
-    </div>
+<div data-role="page" data-dialog="true" id="add_group_result" data-title="{{ title }}">
 
     <div data-role="main" class="ui-content">
-        <p>{{ result_msg }}</p>
+        <p class="{% if result.error %}error{% else %}success{% endif %}" style="text-align: center;">{{ result.msg }}</p>
     </div>
-
-    {% include "app/shared/footer.html" %}
 
 </div>
 

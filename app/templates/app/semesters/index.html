@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<div data-role="page" id="manage_semesters" data-title="{{ title }}">
+<div data-role="page" id="semesters" data-title="{{ title }}">
 
     {% include "app/shared/menu.panel.html" %}
 
@@ -18,8 +18,17 @@
 
         <ul data-role="listview" data-inset="true">
             {% if semesters %}
+                <li data-role="list-divider">aktywny</li>
                 {% for semester in semesters %}
-                    <li><a href="#">{{ semester.academic_year }}{{ semester.sem_type }}<span class="ui-li-count">{{ semester.groups }}</span></a></li>
+                    {% if semester.active %}
+                    <li><a href="{% url 'semesters_details' semester.id %}">{{ semester.academic_year }}{{ semester.sem_type }}<span class="ui-li-count">{{ semester.groups }}</span></a></li>
+                    {% endif %}
+                {% endfor %}
+                <li data-role="list-divider">nieaktywne</li>
+                {% for semester in semesters %}
+                    {% if not semester.active %}
+                    <li><a href="{% url 'semesters_details' semester.id %}">{{ semester.academic_year }}{{ semester.sem_type }}<span class="ui-li-count">{{ semester.groups }}</span></a></li>
+                    {% endif %}
                 {% endfor %}
             {% else %}
                 <li style="text-align: center;">brak</li>

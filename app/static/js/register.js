@@ -4,7 +4,7 @@
  */
 
 $(document).on('pagebeforeshow', '#register', function() {
-    var today = new Date(2016,1,22);
+    var today = new Date(2017, 1, 27);
     $('span.title').html("Dziś jest " + getDayOfWeek(today) + " " + getFormattedDate(today));
     createRegister(today);
 });
@@ -30,7 +30,8 @@ function createRegister(date) {
 
         for(var c in classes) {
             cell = $('<div class="cell"></div>');
-            var classesbox = $('<a href="/groups/' + classes[c].id + '/classes" class="classes classes-' + classes[c].classes_type + '">' + classes[c].start_time + '-' +
+            var classesbox = $('<a href="/groups/' + classes[c].id + '/classes" class="classes classes-' +
+                classes[c].classes_type + '">' + classes[c].start_time + '-' +
                 classes[c].end_time + ' ' + classes[c].classes_type + '<br>' + classes[c].subject + '<br>' +
                 classes[c].short_name + '</a>');
             col.append(cell.append(classesbox));
@@ -84,7 +85,6 @@ function getClasses(date) {
         data : {date : date},
         async : false,
         success : function(data) {
-            console.log(data);
             ret = data;
         }
     });

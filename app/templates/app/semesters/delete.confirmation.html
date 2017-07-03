@@ -1,0 +1,19 @@
+{% extends "app/shared/layout.html" %}
+
+{% block content %}
+
+<div data-role="page" data-dialog="true" id="sem_del_conf" data-title="{{ title }}">
+    <div data-role="main" class="ui-content">
+        <p>Czy na pewno chcesz usunąć ten semestr?</p>
+        <div class="ui-grid-a">
+          <div class="ui-block-a">
+            <a href="{% url 'semesters_delete_confirmation' semester_id 'yes' %}" class="ui-btn ui-corner-all ui-shadow ui-icon-check ui-btn-icon-left">Tak</a>
+          </div>
+          <div class="ui-block-b">
+            <a href="{% url 'semesters_delete_confirmation' semester_id 'no' %}" class="ui-btn ui-corner-all ui-shadow ui-icon-delete ui-btn-icon-left">Nie</a>
+          </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

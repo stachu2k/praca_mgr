@@ -31,7 +31,7 @@
                 <li style="text-align: center;">brak</li>
             {% endif %}
             <li data-role="list-divider">niestacjonarne</li>
-            {% if classes_stationary %}
+            {% if classes_notstationary %}
                 {% for classes in classes_notstationary %}
                     <li>
                         <a href="{% url 'groups_details' classes.group.id %}">
