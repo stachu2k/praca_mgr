@@ -404,7 +404,7 @@ def semesters_delete(request, semester_id):
 @login_required(login_url='/login/')
 def semesters_delete_confirmation(request, semester_id, choice):
     if choice == "yes":
-        # get_object_or_404(Semester, pk=semester_id).delete()
+        get_object_or_404(Semester, pk=semester_id).delete()
         return render(request, 'app/semesters/delete.result.html')
     elif choice == "no":
         return redirect('semesters')
