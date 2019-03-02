@@ -11,3 +11,5 @@
 - [Zajęcia](zajecia/README.md)
 
 - [Dziennik](dziennik/README.md)
+
+[<<Powrót](../README.md)
